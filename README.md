@@ -1,4 +1,4 @@
-# Angular-sample-application
+# MEAN STACK App sample.
 Sample app using MEAN. App is about adding Schools and classes to it.
 
 #Installing and running.
