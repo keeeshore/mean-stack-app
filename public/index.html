@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+<head>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/jquery-1.10.2.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/schoolController.js"></script>
+    <script src="js/classController.js"></script>
+    <link href="bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" ng-app="angularApp">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="list-inline" style="border-bottom: 1px solid #CCC; padding: 10px 5px; margin-bottom: 20px;">
+                <li><a href="#!/school">School</a></li>
+                <li><a href="#!/class">Class</a></li>
+                <li><a href="#!/students">Students</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-12" ng-view></div>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<form class="form-horizontal" ng-controller="classController as controller" ng-init="controller.getSchools()">
+    <p class="text-warning text-right">
+        School #: {{class.schoolId}}
+    </p>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Select a school</label>
+        <div class="col-sm-10">
+            <select class="form-control" ng-model="class.schoolId" ng-change="controller.getClasses(class.schoolId)">
+                <option ng-repeat="school in schools" value="{{school._id}}">{{school.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-2">
+            <table class="table table-responsive table-striped table-condensed">
+                <tr>
+                    <th class="col-sm-1">#Id</th>
+                    <th>Standard</th>
+                    <th>Teacher</th>
+                    <th class="col-sm-2">Action</th>
+                </tr>
+                <tr ng-repeat="class in classes track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{class.std}}</td>
+                    <td>{{class.teacherId}}</td>
+                    <td>
+                        <input type="button" class="btn btn-xs  btn-danger" value="Delete" ng-click="controller.deleteClass(class)">
+                        <input type="button" class="btn btn-xs btn-warning" value="Edit" ng-click="controller.onEditClass(class)">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h3 class="col-sm-offset-2">Class : {{action}}</h3>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Std</label>
+        <div class="col-sm-10">
+            <select class="form-control" ng-model="class.std">
+                <option value="0">kinder</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="teacherId" class="col-sm-2 control-label">Teacher Id</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="teacherId" ng-model="class.teacherId">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-click="controller.submitClass(class.action)">Submit</button>
+        </div>
+    </div>
+</form>
