@@ -1,3 +1,54 @@
 .bordered {
 	/*border: 1px solid #CC0000;*/
 }
+
+#canvas {
+    margin: 0px;
+    padding: 0px;
+    border-left: 1px solid #CCC;
+    /*background: #a3ccff;
+    background: url('../images/aus-map.jpg') no-repeat center center;*/
+    background: url('../images/graph-bg.gif') repeat;
+    /*background: url('../images/graph-pixel.jpg') repeat;*/
+}
+
+
+.axis-cont {
+    position: relative;
+}
+ul.x-axis,
+ul.y-axis {
+    display: inline-block;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: 0px;
+    overflow: hidden;
+}
+
+ul.y-axis {
+    top: 5px;
+    left: -5px;
+}
+ul.y-axis li {
+    display: block;
+    clear: both;
+    margin: 0px 0px 12px 0px;
+    padding: 0px;
+    font-size: 9px;
+    height: 16px;
+    text-align: center;
+    float:left;
+}
+
+ul.x-axis {
+    height:25px;
+}
+ul.x-axis li {
+    display: inline-block;
+    margin: 0px 7px 0px 0px;
+    font-size: 9px;
+    width: 16px;
+    text-align: center;
+}

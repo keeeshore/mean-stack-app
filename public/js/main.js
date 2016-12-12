@@ -25,5 +25,9 @@ angularApp.config(['$routeProvider', function ($routeProvider) {
         when('/class', {
             templateUrl: 'views/class-form.html',
             controller: 'classController'
+        }).
+        when('/map', {
+            templateUrl: 'views/map.html',
+            controller: 'mapController'
         })
 }]);

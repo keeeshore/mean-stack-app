@@ -66,6 +66,11 @@ controllers.controller('classController', ['$route','$scope', '$location',  '$ht
                     $scope.class.teacherId = null;
                 }
             }.bind(this));
+        },
+
+        'cancelClass': function () {
+            $scope.class = {};
+            $scope.action = 'ADD';
         }
     }
 

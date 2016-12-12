@@ -1,0 +1,30 @@
+<div class="row" ng-controller="mapController as controller" id="map-container">
+
+    <div class="col-sm-12 axis-cont">
+        -<ul class="x-axis">
+            <li ng-repeat="point in axisPoints track by $index">{{point.val * 25}}</li>
+        </ul>
+        <ul class="y-axis">
+            <li ng-repeat="point in axisPoints track by $index">{{point.val * 25}}</li>
+        </ul>
+        <canvas id="canvas" height="600" width="1200"></canvas>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <select class="form-control input-xs" ng-model="selectedMapIndex">
+                <option ng-repeat="map in maps" value="{{$index}}">{{map.name}}</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-xs" ng-click="controller.getMapData(selectedMapIndex)">Get Map Data</button>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-xs" ng-click="controller.moveMapX(50)">X +50</button>
+            <button type="button" class="btn btn-xs" ng-click="controller.moveMapX(-50)">X -50</button>
+            <button type="button" class="btn btn-xs" ng-click="controller.moveMapY(+50)">y +50</button>
+            <button type="button" class="btn btn-xs" ng-click="controller.moveMapY(-50)">y -50</button>
+        </div>
+    </div>
+
+
+</div>
