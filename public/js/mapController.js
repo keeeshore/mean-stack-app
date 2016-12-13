@@ -82,48 +82,16 @@ controllers.controller('mapController', ['$route','$scope', '$location', '$http'
             console.log('minX:', this.minX ,'maxX:', this.maxX);
             console.log('minY:', this.minY ,'maxY:', this.maxY);
 
-            //context.rotate(25 * Math.PI / 180);
-            var scale = 4;
-            var startX = this.minX < 0 ? this.minX * (scale * -1) : this.minX * scale;
-            var startY = this.minY < 0 ? this.minY * (scale * -1) : this.minY * scale;
+            var scale = 1;
+            context.setTransform(1, 0, 0, 1, 0, 0);
+            // Will always clear the right space
+            context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            //context.restore();
+            context.translate(this.canvas.width/2, this.canvas.height/2);
+            context.scale(scale, scale * -1);
 
-            startX = this.minX * scale;
-            if (startX < 0) {
-                startX = startX * -1;
-            }
-            if (startX > this.minX) {
-                startX = 0;
-            }
-
-            startY = this.minY * scale;
-            if (startY < 0) {
-                startY = startY * -1;
-            }
-
-            if (startY > this.minY) {
-                startY = 0;
-            }
-
-            console.log('startX:', startX ,'startY:', startY);
-
-            //context.translate(startX, startY);
-            //context.scale(scale, scale * -1);
-
-            //context.translate(-380, -180);
-            //context.scale(0, 0);
-
-
-            //context.translate(200, 200);
-
-            /*context.beginPath();
-            context.lineWidth = 1;
-            context.strokeStyle = 'black';
-            context.moveTo(this.minX , this.minY);
-            context.lineTo(this.maxX , this.maxY);
-            context.stroke();*/
-
-            //context.fillStyle="#CCC";
-            //context.fillRect(0,0,this.canvas.width, this.canvas.height);
+            context.fillStyle="#CCC";
+            context.fillRect(0, 0,this.canvas.width, this.canvas.height);
 
             angular.forEach($scope.mapData.features, function (feature, key) {
                 var coordinates = feature.geometry.coordinates;
@@ -135,21 +103,12 @@ controllers.controller('mapController', ['$route','$scope', '$location', '$http'
                     angular.forEach(coordinate, function (point, indexId) {
                         var x = point[0];
                         var y = point[1];
-
-                        x = x/190 * 600;
-                        y = y/90 * 300;
-
                         console.log(x + ' : ' + y);
-                        context.font = "14px serif";
-                        context.fillText(x + ' <> ' + y, x.toFixed(2) , y.toFixed(2));
-
                         if (indexId === 0) {
                             context.moveTo(x , y);
                         } else {
                             context.lineTo(x , y);
                         }
-
-
                         context.stroke();
                     });
                     context.closePath();
