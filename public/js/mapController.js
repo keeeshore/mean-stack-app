@@ -12,27 +12,32 @@ controllers.controller('mapController', ['$route','$scope', '$location', '$http'
     $scope.maps = [
         {
             'url': 'test',
-            'name': 'Test',
-            'center': {lat: 0, lng: 0}
+            'name': 'India',
+            'zoom': 4,
+            'center': {lat: 77, lng: 35}
         },
         {
             'url': 'africa',
             'name': 'Africa',
+            'zoom': 2,
             'center': {lat: 6, lng: 6}
         },
         {
             'url': 'google-map-data',
             'name': 'Google',
+            'zoom': 5,
             'center': {lat: -28, lng: 137 }
         },
         {
             'url': 'australia',
             'name': 'Aus',
+            'zoom': 2,
             'center': {lat: -23, lng: 132 }
         },
         {
             'url': 'world',
             'name': 'world',
+            'zoom': 4,
             'center': {lat: 0, lng: 0}
         }
     ];
@@ -62,10 +67,17 @@ controllers.controller('mapController', ['$route','$scope', '$location', '$http'
 
         'maxY': 0,
 
+        'scaleMap': function (val) {
+            $scope.mapData.options.zoom = $scope.mapData.options.zoom + val;
+            this.drawMap($scope.mapData.options);
+        },
+
         'getMapData': function (mapIndex) {
-            var options = angular.merge({'zoom': 2}, $scope.maps[mapIndex]);
+            var options = angular.merge({}, $scope.maps[mapIndex]);
             $http.get('api/maps/' + options.url).then(function (response, err) {
+                if (response.data.features)
                 $scope.mapData = response.data;
+                $scope.mapData.options = options;
                 this.drawMap(options);
             }.bind(this));
         },
@@ -82,7 +94,7 @@ controllers.controller('mapController', ['$route','$scope', '$location', '$http'
             console.log('minX:', this.minX ,'maxX:', this.maxX);
             console.log('minY:', this.minY ,'maxY:', this.maxY);
 
-            var scale = 1;
+            var scale = options.zoom || 1;
             context.setTransform(1, 0, 0, 1, 0, 0);
             // Will always clear the right space
             context.clearRect(0, 0, this.canvas.width, this.canvas.height);
