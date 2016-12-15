@@ -41,7 +41,7 @@
             <ul class="y-axis">
                 <li ng-repeat="point in axisPoints track by $index">{{point.val * 25}}</li>
             </ul>-->
-            <canvas id="canvas" height="600" width="1200"></canvas>
+            <canvas id="canvas" height="600" width="1200" ng-mousemove="controller.onMouseMove()" ng-mousedown="controller.onMouseDown()" ng-mouseup="controller.onMouseUp()"></canvas>
         </div>
     </div>
 

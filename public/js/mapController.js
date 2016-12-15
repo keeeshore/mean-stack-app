@@ -99,7 +99,12 @@ controllers.controller('mapController', ['$route','$scope', '$location', '$http'
             // Will always clear the right space
             context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             //context.restore();
-            context.translate(this.canvas.width/2, this.canvas.height/2);
+
+            var translateX = options.translateX || this.canvas.width/2;
+            var translateY = options.translateY || this.canvas.width/2;
+            context.translate(translateX, translateY);
+
+            //context.translate(this.canvas.width/2, this.canvas.height/2);
             context.scale(scale, scale * -1);
 
             context.fillStyle="#CCC";
@@ -163,6 +168,26 @@ controllers.controller('mapController', ['$route','$scope', '$location', '$http'
                 });
 
             });
+        },
+
+        'onMouseDown': function () {
+            //console.log('mouse down clicked...');
+            debugger;
+        },
+
+        'onMouseUp': function () {
+            //console.log('mouse up called: ' + event.offsetX + ' : ' + event.offsetY);
+            $scope.mapData.options.translateX = event.offsetX;
+            $scope.mapData.options.translateY = event.offsetY;
+            this.drawMap($scope.mapData.options);
+
+            delete $scope.mapData.options.translateX;
+            delete $scope.mapData.options.translateY;
+            debugger;
+        },
+
+        'onMouseMove': function () {
+            //console.log(event.offsetX + ' : ' + event.offsetY);
         }
 
     }

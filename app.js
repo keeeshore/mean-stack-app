@@ -6,7 +6,7 @@ var mongodb = require('mongodb');
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
 var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
-var dbUrl = 'mongodb://localhost:27017/test';
+var dbUrl = 'mongodb://kishore:kishore123@localhost:27017/kishoredb';
 
 var dbase;
 var schoolCollection;
