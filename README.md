@@ -8,3 +8,6 @@ Sample app using MEAN. App is about adding Schools and classes to it.
 - app use db 'test' in mongodb. see app.js for more info.
 - run node app.js
 - open localhost:3000/
+
+#Live application:
+- https://kishore-mean-test.scalingo.io/
