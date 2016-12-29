@@ -53,6 +53,12 @@ app.get('/api/maps/*', function (req, res) {
 })
 
 
-app.listen(4000, function () {
+/*app.listen(4000, function () {
     console.log('Example app listening on port 4000!');
-});
+});*/
+
+var server = app.listen(process.env.PORT || 4000, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('App listening at http://%s:%s', host, port);
+})
