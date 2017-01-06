@@ -12,6 +12,13 @@ controllers.controller('schoolController', ['$route','$scope', '$location',  '$h
     };
 
     return {
+		
+		'facebookUpdate': function () {
+			console.log('facebook update test');
+			$http.get('api/update/posts').then(function (response) {
+		 		console.log('response --- ' + response);
+		 	});
+		},
 
         'submitSchool': function (obj) {
             debugger;
@@ -66,6 +73,7 @@ controllers.controller('schoolController', ['$route','$scope', '$location',  '$h
                 debugger;
                 console.log('GET school response ::' + response.data);
                 $scope.schools = response.data.schools;
+				$scope.facebookData = response.data.facebookData[0];
             });
         }
     };

@@ -23,6 +23,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h3 class="panel-heading">School Form</h3>
+			<button type="submit" class="btn btn-default" ng-click="controller.facebookUpdate()">Update Facebook</button>
         </div>
     </div>
     <form class="form-horizontal">
@@ -63,7 +64,20 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default" ng-click="controller.submitSchool(school.action)">Submit</button>
+                
             </div>
         </div>
     </form>
+
+	<div class="row">
+		<ul class="">
+			<li ng-repeat="post in facebookData.posts.data track by $index">
+				<blockquote>
+					<p>{{post.message}}</p>
+				</blockquote>
+				<p class="text-right">{{post.created_time}}</p>
+				
+			</li>
+		</ul>
+	</div>
 </div>
